@@ -1,0 +1,280 @@
+/* You can add global styles to this file, and also import other style files */
+::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, and Edge */
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+
+:root{
+    --bg-color:#1B2431;
+    --second-color:#273142;
+    --third-color:#4880FF;
+    --forth-color:#323D4E;
+    --border-color:#313D4F;
+}
+.active-page{
+    background-color: var(--bg-color);
+    border-top-left-radius:50px ;
+    border-bottom-left-radius:50px ;
+    a{
+        color: white !important;
+    }
+}
+.confirm{
+    background-color: rgba(0, 0, 0, .8);
+    .confirm-form{
+        background-color: #D9D9D9;
+        border-radius: 40px;
+        h2{
+            font-size: 30px;
+            font-weight: 700;
+            color: black;
+            margin: 0;
+        }
+        p{
+            margin: 0;
+            font-size: 18px;
+        }
+        .delete,.discard{
+            padding: 10px 50px;
+            border: none;
+            border-radius: 30px;
+            color: white;
+            transition: all .5s ease;
+        }
+        .delete{
+            background-color: #E04E4E;
+            &:hover{
+                background-color: #a41717;
+            }
+        }
+        .discard{
+            background-color: #6C6A6A;
+            &:hover{
+                background-color: #2d2d2d;
+            }
+        }
+    }
+}
+.bg-row{
+    background-color: #222b38;
+}
+textarea{
+    resize: none !important;
+}
+.visible-state,.hidden-state{
+    padding: 5px 20px;
+    border-radius: 30px;
+    
+}
+.visible-state{
+    box-shadow: 0px 0px 0px 3px #3d7b2761 ;
+    background-color: #3E7B27;
+}
+.hidden-state{
+    background-color: #780C28;
+    box-shadow: 0px 0px 0px 3px #780c2961 ;
+}
+.my-table{
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-block: 20px !important;
+    thead{
+        tr{
+            background-color: #323D4E;
+            color: white;
+            font-weight: 700;
+            th{
+                padding-block: 15px;
+                text-transform: uppercase;
+            }
+        }
+    }
+    tbody{
+        tr{
+            background-color: #273142;
+            color: white;
+            border-top: solid 2px #323D4E ;
+            transition: all .3s ease;
+            td{
+                padding-block: 20px !important;
+                img{
+                    width: 50px;
+                }
+                
+            }
+            &:hover{
+                background-color: #323D4E !important;
+                box-shadow: 0px 0px 15px 2px #273142 ;
+            }
+            .fa-trash-can,.fa-edit{
+                cursor: pointer;
+                transition: all .3s ease;
+
+            }
+            .fa-edit{
+                &:hover{
+                    color: #DAB500;
+                }
+            }
+            .fa-trash-can{
+                &:hover{
+                    color: red;
+                }
+            }
+        }
+    }
+}
+.msg{
+    min-height: calc(100vh - 150px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    h1{
+        font-weight: 700;
+    }
+    p{
+        color: rgba(255, 255, 255, 0.6);
+        font-weight: 400;
+    }
+    .dots{
+        display: flex;
+        column-gap: 10px;
+        justify-content: center;
+        border-radius: 50%;
+        div{
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.6);
+
+            &:nth-child(1){
+                animation: loading .4s alternate infinite;
+            }
+            &:nth-child(2){
+                animation: loading .4s .1s alternate infinite;
+            }
+            &:nth-child(3){
+                animation: loading .4s .2s alternate infinite;
+            }
+            &:nth-child(4){
+                animation: loading .4s .3s alternate infinite;
+            }
+            &:nth-child(5){
+                animation: loading .4s .4s alternate infinite;
+            }
+            &:nth-child(6){
+                animation: loading .4s .5s alternate infinite;
+            }
+        }
+    }
+}
+
+@keyframes loading {
+    0%{
+        transform: translateY(-10px);
+    }
+    100%{
+        transform: translateY(10px);
+    }
+}
+.create-btn,.cancel-btn,.update-btn{
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    transition: all .3s ease;
+    cursor: pointer;
+
+}
+.update-btn{
+    background-color: #DAB500;
+    &:hover{
+        background-color: #957c00;
+    }
+    &:disabled{
+        background-color: gray;
+    }
+}
+.create-btn{
+    background-color:  #0A9C00;
+    &:hover{
+        background-color:  #065b00;
+    }
+    &:disabled{
+        background-color: gray;
+    }
+}
+.cancel-btn{
+    background-color: #9C2200;
+    &:hover{
+        background-color:  #6b1902;
+
+    }
+}
+
+.logic-buttons{
+    margin-bottom: 15px;
+    .filter{
+        color: white;
+        ul{
+            background-color: var(--second-color);
+            border: solid 2px #313D4F;
+            border-left:none;
+            border-radius: 10px;
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            li{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                border-left: solid 2px #313D4F;
+                transition: all .3s ease;
+                width: 100%;
+                &:hover{
+                    background-color: #313D4F;
+                }
+                span{
+                padding:15px 20px;  
+                text-transform: capitalize;
+                }
+                .mat-mdc-form-field-subscript-wrapper{
+                    display: none !important;
+                }
+                input,select,mat-select{
+                    background-color: var(--bg-color);
+                    color: white;
+                    border-radius: 5px;
+                    height: 100%;
+                    width: 100%;
+                    padding: 10px;
+                    border: none;
+                    outline: none;
+                    &::placeholder{
+                        color: white;
+                    }
+                }
+            }
+        }
+    }
+    button{
+        border: none;
+        padding: 10px 25px;
+        border-radius: 20px;
+        background-color: var(--third-color);
+        color: white;
+        transition: all .3s ease;
+        &:hover{
+            background-color: #6C99FF;
+        }
+    }
+}

@@ -1,0 +1,153 @@
+<div class="container-fluid new-project p-4 bg-white">
+    <form [formGroup]="projectForm" (ngSubmit)="addProject()" action="">
+        <div class="row">
+            <div  class="col-md-6">
+                <div  class="mb-4 project-cover">
+                    <ngx-dropzone   (change)="onSelect($event)" [multiple]="false" accept="image/*">
+                        <ngx-dropzone-label>
+                            <img class="upload-icon" src="./assets/images/upload.png" alt="">
+                            <span>Upload Project Cover</span>
+                        </ngx-dropzone-label>
+                        <ngx-dropzone-preview  *ngFor="let i of coverPreview ; let index = index;" [removable]="true" (removed)="onRemove(projectCover[index])">
+                            <ngx-dropzone-label >
+                                <div class="image-preview">
+                                    <img [src]="i" alt="Image Preview" />
+                                </div>
+                            </ngx-dropzone-label>
+                        </ngx-dropzone-preview>
+                    </ngx-dropzone>
+                    <mat-error class="text-capitalize" *ngIf="msgErr"><i class="fa-solid fa-circle-exclamation"></i> Only one photo is allowed. <mat-hint class="text-muted ">*remove it first</mat-hint> </mat-error>
+                    <div *ngIf="projectForm.get('projectCover')?.touched || projectForm.get('projectCover')?.errors">
+                        <p *ngIf="projectForm.get('projectCover')?.errors?.['required']" class="text-danger m-0 mt-1">this field is <strong>required</strong></p>
+                    </div>
+                </div>
+            </div>
+            <div  class="col-md-6">
+                <div class="mb-4 project-images">
+                    <ngx-dropzone   (change)="onSelectMultiImages($event)" [multiple]="true" accept="image/*">
+                        <ngx-dropzone-label>
+                            <img class="upload-icon" src="./assets/images/upload.png" alt="">
+                            <span>Upload Project Images</span>
+                        </ngx-dropzone-label>
+                        <ngx-dropzone-preview  *ngFor="let i of previews ; let index = index;" [removable]="true" (removed)="onRemoveMultiImages(images[index],index)">
+                            <ngx-dropzone-label >
+                                <div   class="image-preview">
+                                    <img [src]="i" alt="Image Preview" />
+                                </div>
+                            </ngx-dropzone-label>
+                        </ngx-dropzone-preview>
+                    </ngx-dropzone>
+                    <div *ngIf="projectForm.get('images')?.touched || projectForm.get('images')?.errors">
+                        <p *ngIf="projectForm.get('images')?.errors?.['required']" class="text-danger m-0 mt-1">this field is <strong>required</strong></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-4">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Project name</mat-label>
+                        <input formControlName="name" type="text" placeholder="enter name" matInput>
+                        <mat-error *ngIf="projectForm.get('name')?.errors?.['required']">
+                            this field is <strong>required</strong>
+                        </mat-error>
+                        <mat-error *ngIf="projectForm.get('name')?.errors?.['minlength']">
+                            Name must be at least <strong>6 characters</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-4">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Project Location</mat-label>
+                        <input formControlName="location" type="text" placeholder="enter Location" matInput>
+                        <mat-error>
+                            this field is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-4">
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Start Date</mat-label>
+                        <input formControlName="startDate" placeholder="Start Date" matInput [matDatepicker]="picker">
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                        <mat-error>
+                            this field is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-4">
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>End Date</mat-label>
+                        <input formControlName="endDate" placeholder="End Date" matInput [matDatepicker]="picker1">
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                        <mat-datepicker #picker1></mat-datepicker>
+                        <mat-error>
+                            this field is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-4">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Project category</mat-label>
+                        <mat-select formControlName="category">
+                            <mat-option [value]="cat._id" *ngFor="let cat of categories">{{cat.name}}</mat-option>
+                        </mat-select>
+                        <mat-error>
+                            this field is <strong>required</strong>
+                        </mat-error>
+                        
+                    </mat-form-field>
+                    
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-4">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Project status</mat-label>
+                        <input formControlName="status" type="text" placeholder="enter status" matInput>
+                        <mat-error>
+                            this field is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="mb-4">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Project Description</mat-label>
+                        <textarea formControlName="description" matInput placeholder="Description" rows="6"></textarea>
+                        <mat-error *ngIf="projectForm.get('description')?.errors?.['required']">
+                            this field is <strong>required</strong>
+                        </mat-error>
+                        <mat-error *ngIf="projectForm.get('description')?.errors?.['minlength']">
+                            Description must be at least <strong>20 characters</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="mb-4">
+                    <mat-radio-group formControlName="visible">
+                        <mat-radio-button value="true">Visible</mat-radio-button>
+                        <mat-radio-button value="false">Hidden</mat-radio-button>
+                    </mat-radio-group> 
+            </div>
+            </div>
+            <div class="d-flex justify-content-center align-items-center gap-3">
+                <button [disabled]="projectForm.invalid" *ngIf="!updateState"  type="submit" class="create-btn" ><span *ngIf="!isLoading">Submit</span> <i *ngIf="isLoading" class="fa fa-spinner fa-spin"></i></button>
+                <button (click)="updateProject()" *ngIf="updateState" [disabled]="projectForm.get('name')?.errors?.['required'] ||projectForm.get('description')?.errors?.['required'] ||projectForm.get('location')?.errors?.['required'] ||projectForm.get('startDate')?.errors?.['required'] ||projectForm.get('endDate')?.errors?.['required'] ||projectForm.get('status')?.errors?.['required'] ||projectForm.get('category')?.errors?.['required'] " type="button" class="update-btn" ><span *ngIf="!isLoading">Update</span> <i *ngIf="isLoading" class="fa fa-spinner fa-spin"></i></button>
+                <button (click)="cancel(true)" type="button" class="cancel-btn" >Cancel</button>
+            </div>
+        </div>
+    </form>
+</div>

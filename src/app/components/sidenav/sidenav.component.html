@@ -1,0 +1,30 @@
+<div class="main ">
+    <aside class="d-flex flex-column justify-content-between align-items-center ">
+        <div [routerLink]="['/',role,'home']" class="logo">
+            <img src="../../../assets/images/Logo1.png" alt="">
+        </div>
+        <div class="links">
+            <ul class="list-unstyled d-flex flex-column gap-1">
+                <li [routerLink]="['/',role,'contact']" routerLinkActive="active-page">
+                    <a class="text-decoration-none"><span *ngIf="!state" class="">Contacts</span> <i class="fa-solid fa-address-card"></i></a>
+                </li>
+                <li [routerLink]="['/',role,'project']" routerLinkActive="active-page">
+                    <a class="text-decoration-none"><span *ngIf="!state" class="">projects</span> <i class="fa-solid fa-bars-progress"></i> </a>
+                </li>
+                <li [routerLink]="['/',role,'client']" routerLinkActive="active-page">
+                    <a class="text-decoration-none"><span *ngIf="!state" class="">clients</span> <i class="fa-solid fa-star-half-stroke"></i></a>
+                </li>
+                <li *ngIf="role === 'admin'" [routerLink]="['/',role,'users']" routerLinkActive="active-page">
+                    <a class="text-decoration-none"><span *ngIf="!state" class="">users</span> <i class="fa-solid fa-users"></i></a>
+                </li>
+            </ul>
+        </div>
+        <div class="w-100 ">
+            <button (click)="logOut()" type="button" class="logout-btn"><span *ngIf="!state" class="">Logout</span> <i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+        </div>
+    </aside>
+    <div class="side-buttons ">
+        <i (click)="changeLayout()" *ngIf="!state" class="fa-solid fa-angle-left"></i>
+        <i (click)="changeLayout()" *ngIf="state" class="fa-solid fa-angle-right"></i>
+    </div>
+</div>

@@ -1,0 +1,50 @@
+<section class="login py-5">
+    <div class="container all py-4 p-lg-5">
+        <div class="title">
+            <h1 class=" text-uppercase ">SKYBUILDERS DASHBOARD</h1>
+        </div>
+        <div class="row align-items-end py-4">
+            <div class="col-md-7 order-lg-0 order-1">
+                <div class="form d-flex flex-column">
+                    <form [formGroup]="loginForm" (ngSubmit)="login()" class="login-form px-lg-5 px-2">
+                        <div class="mb-4">
+                            <label class="form-label d-block" for="email">Email</label>
+                            <div class="position-relative my-input">
+                                <input #emailInput formControlName="email" class="w-100" type="email" required  id="email" placeholder="username@example.com">
+                                <div class="icon">
+                                    <i class="fa fa-envelope fa-xl"></i>
+                                </div>
+                            </div>
+                            <div *ngIf="loginForm.get('email')?.errors && (loginForm.get('email')?.touched || emailInput.value.length > 0) " class="alert d-flex flex-column gap-2 alert-danger mt-2">
+                                <p *ngIf="loginForm.get('email')?.errors?.['required'] " class="m-0 text-capitalize" ><i class="fa-solid fa-circle-exclamation"></i> this field is required</p>
+                                <p *ngIf="loginForm.get('email')?.errors?.['email'] " class="m-0 text-capitalize" ><i class="fa-solid fa-circle-exclamation"></i> please enter valid email</p>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label d-block" for="email">Password</label>
+                            <div class="my-input">
+                                <input #passwordInput  formControlName="password" class="w-100" type="password" required  id="email" placeholder="Enter your Password">
+                                <div class="icon">
+                                    <i class="fa fa-lock fa-xl"></i>
+                                </div>
+                            </div>
+                            <div *ngIf="loginForm.get('password')?.errors && (loginForm.get('password')?.touched || passwordInput.value.length > 0) " class="alert d-flex flex-column gap-2 alert-danger mt-2">
+                                <p *ngIf="loginForm.get('password')?.errors?.['required'] " class="m-0 text-capitalize" ><i class="fa-solid fa-circle-exclamation"></i> this field is required</p>
+                            </div>
+                        </div>
+                        <div>
+                            <button [disabled]="loginForm.invalid" type="submit" class="login-btn"><span *ngIf="!isLoading">Login</span> <i *ngIf="isLoading" class="fa fa-spinner fa-spin"></i></button>
+                        </div>
+
+                        <p *ngIf="errMsg" class="alert alert-danger mt-2 m-0 text-center">{{errMsg}}</p>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-5 order-lg-1 order-0">
+                <div class="p-lg-0 p-4">
+                    <img src="../../../assets/images/Logo.png" class="w-100" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

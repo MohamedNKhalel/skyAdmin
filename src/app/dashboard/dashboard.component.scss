@@ -1,0 +1,13 @@
+:host{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.side-nav,.content{
+    transition: all .3s ease-in-out;
+}
+.content{
+    min-height: calc(100vh - 80px) !important;
+    background-color: var(--bg-color);
+
+}

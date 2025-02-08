@@ -1,0 +1,53 @@
+
+
+<nav class="navbar navbar-expand-sm navbar-light">
+    <div class="container-fluid p-0">
+        <div class="me-auto profile d-flex gap-2 justify-content-between align-items-center text-white">
+            <div class=" d-flex flex-column align-items-center">
+                <img src="./assets/images/profile.png" alt="user">
+            </div>
+            <div class="info">
+                <div>
+                    <h3 class="m-0 ">{{email}} <span *ngIf="active" class="text-success text-capitalize">Active</span> <span *ngIf="!active" class="text-danger text-capitalize" >inactive</span></h3>
+                </div>
+                <div class="d-flex gap-2 align-items-center justify-content-between w-100">
+                    <p class="m-0">{{role}}</p>
+                    <div *ngIf="remainingTime$ | async as remainingTime" class=" text-center ">
+                        <p class="m-0"><span class="text-danger fs-6 fw-medium text-capitalize" ><i class="fa-regular fa-xl fa-clock me-2 fa-spin"></i></span> <span class="remain-time">{{formatTime(remainingTime)}}</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button
+            class="navbar-toggler d-lg-none"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapsibleNavId"
+            aria-controls="collapsibleNavId"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav m-auto my-0 mt-2 gap-lg-3  text-center mt-lg-0 links">
+                <li class="nav-item fs-6" routerLinkActive="active-link" [routerLink]="'/'+role+'/contact'">
+                    <a class="nav-link" >Contact</a>
+                </li>
+                <li class="nav-item fs-6" routerLinkActive="active-link" [routerLink]="'/'+role+'/project'">
+                    <a class="nav-link" >Projects</a>
+                </li>
+                <li class="nav-item fs-6" routerLinkActive="active-link" [routerLink]="'/'+role+'/client'">
+                    <a class="nav-link" >Clients</a>
+                </li>
+                <li class="nav-item fs-6" routerLinkActive="active-link" [routerLink]="'/'+role+'/users'">
+                    <a class="nav-link" >Users</a>
+                </li>
+            </ul>
+            
+            <div  class="pe-3 text-center text-center ms-auto">
+                <p class="m-0 text-white fs-6"><span *ngIf="currentTime$ | async as currentTime">{{currentTime| date:"dd - MMMM - yyyy | hh:mm:ss"}}</span></p>
+            </div>
+        </div>
+    </div>
+</nav>

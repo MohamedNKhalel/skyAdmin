@@ -1,0 +1,43 @@
+<div class="container-fluid bg-white client py-5">
+    <form [formGroup]="clientForm">
+        <div class="row">
+            <div class="mb-4">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Name</mat-label>
+                    <input formControlName="name" type="text" matInput placeholder="new name ....">
+                    <mat-error>
+                        Required Field*
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="mb-4">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Opinion</mat-label>
+                    <input formControlName="opinion" type="text" matInput placeholder="new opinion ....">
+                    <mat-error>
+                        Required Field*
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="mb-4">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Rate</mat-label>
+                    <input formControlName="rate" max="5" min="1" type="number" matInput placeholder="new rate ....">
+                    <mat-error>
+                        Required Field*
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="mb-4">
+                    <mat-radio-group formControlName="visible">
+                        <mat-radio-button value="true">visible</mat-radio-button>
+                        <mat-radio-button value="false">Hidden</mat-radio-button>
+                    </mat-radio-group> 
+            </div>
+            <div class="mb-4 d-flex flex-wrap gap-3 justify-content-center">
+                <button (click)="update()" [disabled]="clientForm.invalid" type="submit" class="update-btn">Update</button>
+                <button (click)="cancel()" type="button" class="cancel-btn">Cancel</button>
+            </div>
+        </div>
+    </form>
+</div>

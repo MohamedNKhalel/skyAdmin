@@ -1,0 +1,88 @@
+.new-project{
+    mat-form-field{
+        mat-label{
+            text-transform: capitalize;
+        }
+    }
+    
+    .project-cover{
+
+        ngx-dropzone{
+            height: 200px;
+            padding: 0;
+            ngx-dropzone-label{
+                &:hover .upload-icon{
+                    transform: scale(1.2);
+                }
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+                img{
+                    width: 50px;
+                    transition: all .2s ease-in-out;
+                }
+            }
+            
+            ngx-dropzone-preview{
+                min-width: 100% !important;
+                min-height:200px !important;
+                padding: 0 !important;
+                margin: 0 !important;
+    
+                ngx-dropzone-label{
+                    width: 90%;
+                    height: 100%;
+                    .image-preview{
+                        width: 100%;
+                        height: 200px;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        img{
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                        }
+                    }
+                }
+            }
+            
+        }
+    }
+    ngx-dropzone{
+        height: 200px;
+        padding: 0;
+        ngx-dropzone-label{
+            &:hover .upload-icon{
+                transform: scale(1.2);
+            }
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            img{
+                width: 50px;
+                transition: all .2s ease-in-out;
+            }
+        }
+        
+        ngx-dropzone-preview{
+            ngx-dropzone-label{
+                .image-preview{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    img{
+                        width: 130px;
+                        height: 140px;
+                        object-fit: cover;
+                    }
+                }
+            }
+        }
+        
+    }
+}

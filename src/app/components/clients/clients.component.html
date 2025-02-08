@@ -1,0 +1,55 @@
+<div class="container-fluid mt-4">
+    <table class="my-table">
+        <thead>
+            <tr>
+                <th>Num</th>
+                <th>Client Name</th>
+                <th>Date</th>
+                <th>rate</th>
+                <th>Visible</th>
+                <th colspan="2">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr (click)="displayOpinion(i)" *ngFor="let client of clients ; let i = index ; let e = even">
+                <td [ngClass]="{'bg-row':e}">{{i+1}}</td>
+                <td [ngClass]="{'bg-row':e}">{{client.name}}</td>
+                <td [ngClass]="{'bg-row':e}">{{client.createdAt | date:"longDate"}}</td>
+                <td [ngClass]="{'bg-row':e}">{{client.rate}}.0</td>
+                <td [ngClass]="{'bg-row':e}"><span [class]="client.visible?'visible-state':'hidden-state'">{{client.visible ? 'Visible' : 'Hidden'}}</span></td>
+                <td [ngClass]="{'bg-row':e,}" (click)="stop($event)"><i (click)="updateClient(client)" class="fa fa-edit fa-xl me-3"></i></td>
+                <td [ngClass]="{'bg-row':e}" (click)="stop($event)"><i (click)="passId(client._id)" class="fa fa-trash-can fa-xl me-3"></i></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div (click)="opinionClicked = false" *ngIf="opinionClicked" class="position-fixed bgda top-0 bottom-0 start-0 end-0 d-flex justify-content-center opinion-layer align-items-center">
+    <div (click)="stop($event)" class="opinion ">
+        <div class="main-message">
+            <div>
+                <h2 class="sender text-capitalize">{{specific.name}}<i class="fa fa-user-alt"></i></h2>
+            </div>
+            <div class="d-flex flex-wrap gap-4 justify-content-between align-items-center content-title">
+                <h4 class="d-flex align-items-center m-0 gap-2 text-black">Message <i class="fa fa-message pt-1"></i></h4>
+                <span><i class="fa-regular fa-calendar-days"></i> {{specific.dateOfCreation| date:'EEEE, MMMM d, y, h:mm:ss a zzzz' }}</span>
+            </div>
+            <div class="content mt-2">
+                <p class="text-black">{{specific.opinion}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div (click)="isDelClicked = !isDelClicked" *ngIf="isDelClicked" class="position-fixed top-0 bottom-0 end-0 start-0 d-flex flex-column  justify-content-center align-items-center confirm">
+    <div (click)="stop($event)" class="confirm-form gap-3 w-50 text-center p-4 d-flex flex-column">
+        <h2>Are you sure you want to delete this item?</h2>
+        <p class="text-muted"><strong >Note : </strong>This action cannot be undone.</p>
+        <div class="d-flex justify-content-center align-items-center gap-4 flex-wrap">
+            <button (click)="isDelClicked = !isDelClicked" type="button" class="discard">Discard</button>
+            <button (click)="deleteClient()" type="button" class="delete">Delete</button>
+        </div>
+    </div>
+    
+</div>

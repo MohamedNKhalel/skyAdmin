@@ -1,0 +1,19 @@
+:host{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.side-nav,.content{
+    transition: all .3s ease-in-out;
+}
+.content{
+    min-height: calc(100vh) !important;
+    background-color: var(--bg-color);
+    padding-top: 1px;
+}
+
+@media screen and (max-width:768px) {
+    .side-nav{
+        display: none;
+    }
+}

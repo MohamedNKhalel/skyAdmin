@@ -1,0 +1,86 @@
+.login{
+    min-height:100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    .all{
+        border-radius: 20px;
+        .title{
+            text-align: center;
+            h1{
+                color: #E1D87F;
+                margin: 0;
+                // background-color: rgba(255, 255, 255, 0.1);
+                padding: 10px;
+                border-radius: 20px;
+                // box-shadow: 0px 0px 15px -5px white;
+
+                display: inline-block;
+            }
+        }
+        .form{
+            .login-form{
+                label{
+                    font-size: 17px;
+                    font-weight: 500;
+                    color: white;
+                }
+                .my-input{
+                    position: relative;
+                    input{
+                        padding: 15px 20px;
+                        padding-left: 50px;
+                        border-radius: 4px;
+                        background-color: white;
+                        outline: none;
+                        border: none;
+                    }
+                    .icon{
+                        position: absolute;
+                        top: 50%;
+                        bottom: 50%;
+                        display: flex;
+                        align-items: center;
+                        padding: 8px;
+                        border-right: solid black 3px;
+                        height: 100%;
+                        transform: translateY(-50%);
+                        i{
+                            color: black;
+                        }
+                    }
+                }
+                .login-btn{
+                    padding: 10px 25px;
+                    background-color: #E1D87F;
+                    border: none;
+                    border-radius: 4px;
+                    color: black;
+                    font-weight: 500;
+                    width: 100%;
+                    border:solid 2px transparent;
+                    transition: all .5s ease;
+                    &:hover{
+                        background-color: #000000;
+                        color: white;
+                        border:solid 2px white;
+                    }
+                    &:disabled{
+                        background-color: rgba(255, 255, 255, 0.1);
+                        color: gray;
+                        &:hover{
+                            border:solid 2px transparent;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width:768px) {
+    .all{
+        box-shadow: none !important;
+    }
+}

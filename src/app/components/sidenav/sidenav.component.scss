@@ -1,0 +1,86 @@
+.main{
+    position: sticky;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    min-height: 100vh;
+    background-color:  var(--bg-color) ;
+    aside{
+        background-color:  var(--second-color) ;
+        padding-block: 40px;
+        min-height: 100vh;
+        overflow: hidden;
+        .logo{
+            cursor: pointer;
+            img{
+                width: 100px;
+            }
+        }
+        .links{
+            width: 100%;
+            ul{
+                li{
+                    cursor: pointer;
+                    &:hover a{
+                        background-color: var(--bg-color);
+                        color: white;
+                    }
+                    a{
+                        display: flex;
+                        width: 100%;    
+                        align-items: center;
+                        justify-content: space-between;
+                        color: white;
+                        font-size: 20px;
+                        font-weight: 500;
+                        text-transform: uppercase;
+                        padding-inline: 50px;
+                        padding-block: 20px;
+                        transition: all .2s ease-in-out;
+                        border-top-left-radius:50px ;
+                        border-bottom-left-radius:50px ;
+                    }
+                }
+            }
+        }
+        .logout-btn{
+            border: solid transparent 2px;
+            background-color: transparent;
+            padding: 5px 20px;
+            display: block;
+            border-radius: 10px;
+            color: white;
+            width: 100%;
+            transition: all .3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-inline: 50px;
+            font-size: 18px;
+            &:hover{
+                border: solid white 2px;
+            }
+            
+        }
+    }
+    .side-buttons{
+        color: white;
+        position: absolute;
+        top: 0;
+        // left:0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        font-size: 18px;
+        justify-content: flex-start;
+        cursor: pointer;
+        i{
+            padding:15px 12px;
+            transition: all .2s ease-in-out;
+            &:hover{
+                background-color: rgb(9, 9, 9,.5);
+            }
+        }
+    }
+}

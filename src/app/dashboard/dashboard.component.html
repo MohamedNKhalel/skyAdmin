@@ -1,0 +1,11 @@
+<div class="w-100">
+    <div class="row g-0 ">
+        <div class="side-nav"  [ngClass]="navState? 'col-md-1' : 'col-md-2' ">
+                <app-sidenav (navState)="recieveState($event)"></app-sidenav>
+        </div>
+        <div class="content"  [ngClass]="navState ? 'col-md-11' : 'col-md-10' ">
+                <app-nav></app-nav>
+                <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

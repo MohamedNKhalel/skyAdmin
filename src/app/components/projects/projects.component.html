@@ -1,0 +1,116 @@
+<div class="main container-fluid mt-4">
+    <div class="row justify-content-between align-items-center logic-buttons">
+        <div class="col-md-10">
+            <div class="filter">
+                <ul class="list-unstyled">
+                    <li (click)="clearSearch()">
+                        <i *ngIf="!nameFlag && !startDateFlag && !endDateFlag && !statusFlag && !categoryFlag" class="fa-solid fa-filter"></i>
+                        <i *ngIf="nameFlag || startDateFlag || endDateFlag || statusFlag || categoryFlag" class="fa-solid fa-filter-circle-xmark"></i>
+                        <span *ngIf="!nameFlag && !startDateFlag && !endDateFlag && !statusFlag && !categoryFlag">Filter By</span>
+                        <span *ngIf="nameFlag || startDateFlag || endDateFlag || statusFlag || categoryFlag">Reset Filter</span>
+                    </li>
+                    <li (click)="toggleFilter('nameFlag')">
+                        <span *ngIf="!nameFlag">Name</span>
+                        <input  *ngIf="nameFlag" [(ngModel)]="nameSearch"  type="text" placeholder="Enter Name" title="name">
+                    </li>
+                    <li (click)="toggleFilter('categoryFlag')">
+                        <span  *ngIf="!categoryFlag">Category</span>
+                        <select [(ngModel)]="categorySearch" *ngIf="categoryFlag"  title="categories">
+                            <option value="" selected disabled>Select</option>
+                            <option *ngFor="let cat of categories" [value]="cat.name">{{cat.name}}</option>
+                        </select>
+                    </li>
+                    <li (click)="toggleFilter('statusFlag')">
+                        <span  *ngIf="!statusFlag">Status</span>
+                        <select [(ngModel)]="statusSearch" *ngIf="statusFlag"  title="categories">
+                            <option value="" selected disabled>Select</option>
+                            <option *ngFor="let status of projectStatus" [value]="status">{{status}}</option>
+                        </select>
+                    </li>   
+                    <li (click)="toggleFilter('startDateFlag')">
+                        <span  *ngIf="!startDateFlag">start date</span>
+                        <input [(ngModel)]="startDateSearch" *ngIf="startDateFlag" type="date" title="date" name="" id="">
+                    </li>
+                    <li (click)="toggleFilter('endDateFlag')">
+                        <span  *ngIf="!endDateFlag">end date</span>
+                        <input [(ngModel)]="endDateSearch" *ngIf="endDateFlag" type="date" title="date" name="" id="">
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="text-end">
+                <button (click)="addProject()" type="button" >New Project</button>
+                <!-- <button (click)="addProject()" type="button" class="mt-2 btn btn-outline-primary" >Add Category</button> -->
+            </div>
+        </div>
+    </div>
+    <div class=" mt-4 overflow-auto">
+        <div>
+            <span class="text-white-50"><i class="fa-regular fa-circle-question"></i> Click on the cover to see project images</span>
+        </div>
+        <table class="my-table">
+            <thead>
+                <tr>
+                    <th>Cover</th>
+                    <th>Num</th>
+                    <th>name</th>
+                    <th>location</th>
+                    <th>start Date</th>
+                    <th>end Date</th>
+                    <th>category</th>
+                    <th>Visibilty</th>
+                    <th colspan="3" class="text-start ps-4">status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let project of Projects | namesearch:nameSearch | statussearch : statusSearch | categorysearch:categorySearch | startdatesearch :startDateSearch | enddatesearch :endDateSearch; let i = index;let e = even">
+                    <td [class.bg-row]="e" (click)="displayProjectImages(project)" ><img [src]="project.projectCover" [alt]="project.name" title="image"></td>
+                    <td [class.bg-row]="e">{{i+1}}</td>
+                    <td [class.bg-row]="e">{{project.name}}</td>
+                    <td [class.bg-row]="e">{{project.location}}</td>
+                    <td [class.bg-row]="e">{{project.startDate | date:"longDate"}}</td>
+                    <td [class.bg-row]="e">{{project.endDate | date:"longDate"}}</td>
+                    <td [class.bg-row]="e">{{project.category.name}}</td>
+                    <td [class.bg-row]="e"><span [class]="project.visible ? 'visible-state' : 'hidden-state'">{{project.visible?'Visible':'Hidden'}}</span></td>
+                    <td [class.bg-row]="e">{{project.status}}</td>
+                    <td [class.bg-row]="e" (click)="stop($event)"><i (click)="updateProject(project)" class="fa fa-edit fa-xl me-3"></i></td>
+                    <td [class.bg-row]="e" (click)="stop($event)"><i (click)="openDeleteProject(project._id)" class="fa fa-trash-can fa-xl me-3"></i></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<ng-template #msg>
+    <div class="msg flex-column ">
+        <h1 class="text-white">Empty</h1>
+        <p class="text-white-50">There is no Project yet, please Add some</p>
+    </div>
+</ng-template>
+
+<div (click)="isDelClicked = !isDelClicked" *ngIf="isDelClicked" class="position-fixed top-0 bottom-0 end-0 start-0 d-flex flex-column  justify-content-center align-items-center confirm">
+    <div (click)="stop($event)" class="confirm-form gap-3 w-50 text-center p-4 d-flex flex-column">
+        <h2>Are you sure you want to delete this Project?</h2>
+        <p class="text-muted"><strong >Note : </strong>This action cannot be undone.</p>
+        <div class="d-flex justify-content-center align-items-center gap-4 flex-wrap">
+            <button (click)="isDelClicked = !isDelClicked" type="button" class="discard">Discard</button>
+            <button (click)="ConfirmDeleteProject()" type="button" class="delete">Delete</button>
+        </div>
+    </div>
+</div>
+
+<div (click)="isImagesClicked = false" *ngIf="isImagesClicked" class=" d-flex justify-content-center align-items-center project-image-preview">
+        <div (click)="stop($event)" class="main-image position-relative">
+            <img  class="d-block m-auto" [src]="projectImages[imageIndex]"  alt=""> 
+            <i (click)="isImagesClicked = false" class="fa fa-xmark fa-2x position-absolute  "></i>
+            <div class="position-absolute slider-arrow d-flex justify-content-between">
+                <i  (click)="move('left')" class="fa-solid fa-circle-left"></i>
+                <i (click)="move('right')" class="fa-solid fa-circle-right"></i>
+            </div>
+            <div class="text-center mt-3 ">
+                <span class="text-white bg-black p-2 rounded-3 "><span class="text-info">{{imageIndex+1}}</span> / {{projectImages.length}}</span>
+            </div>
+
+        </div>
+</div>
