@@ -33,7 +33,6 @@ export class ContactsComponent implements OnInit {
   sendDateFlag:boolean = false;
   ngOnInit(): void {
       this.getContacts();
-      console.log(this.date);
       
   }
   constructor(private _DataService:DataService , private _ToastrService:ToastrService){}
@@ -46,7 +45,7 @@ export class ContactsComponent implements OnInit {
   getContacts(){
     this._DataService.getContacts().subscribe({
       next:data=>{
-        console.log(data);
+
         this.contacts = data;
       },
       error:err=>{
@@ -76,7 +75,6 @@ export class ContactsComponent implements OnInit {
   deleteContact(id:string){
     this._DataService.deleteContact(id).subscribe({
       next:data=>{
-        console.log(data);
         this.isDelClicked = false;
         this._ToastrService.success(data.message)
         this.getContacts();

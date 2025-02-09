@@ -48,7 +48,6 @@ export class ProjectsComponent implements OnInit{
       next:(data:Project[])=>{
         this.Projects = data;
         this.projectStatus = data.map(project=> project.status);
-        console.log(this.Projects);
         
       },
       error:err=>{
@@ -60,7 +59,6 @@ export class ProjectsComponent implements OnInit{
     this._DataService.getAllCategories().subscribe({
       next:(data:Category[])=>{
         this.categories = data;
-        console.log(this.categories);
         
         
       },error:err=>{
@@ -75,7 +73,7 @@ export class ProjectsComponent implements OnInit{
     maxWidth: '90vw',
     maxHeight: '90vh',
     hasBackdrop: true,
-    disableClose: false,
+  disableClose: false,
     data:data,
     backdropClass: 'custom-backdrop-class',
     panelClass: 'custom-dialog-class',
@@ -85,7 +83,6 @@ export class ProjectsComponent implements OnInit{
     })
     dialogRef.afterClosed().subscribe(result=>{
       if(result == true){
-        console.log(true);
         this.getAllProjects();
       }
       console.log('The dialog was closed');
@@ -125,7 +122,6 @@ export class ProjectsComponent implements OnInit{
     this.imageIndex = 0;
     this.isImagesClicked = !this.isImagesClicked;
     this.projectImages = data.images;
-    console.log(this.projectImages);
 
   }
   move(direction:string){

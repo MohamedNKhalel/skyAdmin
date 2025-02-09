@@ -37,7 +37,6 @@ export class NavComponent implements OnInit {
     this._AuthService.active.subscribe({
       next:data=>{
         this.active = data;
-        console.log(this.active);
         
       }
     })

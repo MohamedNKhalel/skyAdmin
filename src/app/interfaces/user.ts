@@ -3,6 +3,7 @@ export interface User {
     name:string,
     password:string,
     status:string,
+    boss:string,
     phone:string,
     _id:string 
 }

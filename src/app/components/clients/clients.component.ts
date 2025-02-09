@@ -37,7 +37,6 @@ export class ClientsComponent implements OnInit{
   getAllClients(){
     this._DataService.getAllClients().subscribe({
       next:(data:Client[])=>{
-        console.log(data);
         this.clients = data
       },
       error:err=>{
@@ -52,7 +51,6 @@ export class ClientsComponent implements OnInit{
   deleteClient(){
     this._DataService.deleteClient(this.clientId).subscribe({
       next:data=>{
-        console.log(data);
         this._ToastrService.success(data.message,"SUCCESS");
         this.toggleIsDelClicked();
         this.getAllClients();

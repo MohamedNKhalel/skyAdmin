@@ -42,7 +42,6 @@ export class AddUserComponent implements OnInit{
     }
     this._AuthService.addUser(model).subscribe({
       next:data=>{
-        console.log(data);
         this._ToastrService.success("Account Added Successfully");
         this.closeModal();
       },
@@ -58,7 +57,6 @@ export class AddUserComponent implements OnInit{
     this.data.phone = this.addUserForm.get('phone')?.value
     this._AuthService.updateUser(this.data._id,this.data).subscribe({
       next:data=>{
-        console.log(data);
         this._ToastrService.success("User Update Successfully")
         this.closeModal();
       },
@@ -66,9 +64,7 @@ export class AddUserComponent implements OnInit{
         console.log(err );
         
       }
-    })
-    console.log(this.data);
-    
+    })    
   }
   closeModal(){
     this._MatDialogRef.close(true);

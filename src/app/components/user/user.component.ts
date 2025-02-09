@@ -50,7 +50,6 @@ export class UserComponent implements OnInit {
   getUsers(){
     this._AuthService.getUsers().subscribe({
       next:data=>{
-        // console.log("All Users : ",data);
         this.users = data;
       },
       error:err=>{
@@ -60,14 +59,15 @@ export class UserComponent implements OnInit {
     })
   }
 
-  logValue(event:any){
-    console.log(event.target.value);
-    
-  }
   deleteUser(id:string){
-    this._AuthService.deleteUser(id).subscribe({
+    const user:any = this.users.find(user=> user._id == id);
+    if(user.boss){
+      this._ToastrService.error("cannot delete this admin");
+      this.isDelClicked = false
+    }
+    else{
+      this._AuthService.deleteUser(id).subscribe({
       next:data=>{
-        console.log(data);
         this.isDelClicked = false;
         this._ToastrService.success(data.message);
         this.getUsers();
@@ -77,6 +77,7 @@ export class UserComponent implements OnInit {
         
       }
     })
+    }
   }
 
   addUser(): void {
@@ -84,6 +85,7 @@ export class UserComponent implements OnInit {
 
     const dialogRef = this._MatDialog.open(AddUserComponent, {
       width:"700px",
+      minHeight:"350px"
     });
     dialogRef.afterClosed().subscribe(result => {
       if(result == true){
