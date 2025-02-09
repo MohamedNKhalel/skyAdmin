@@ -1,8 +1,8 @@
-<div class="main container-fluid mt-4">
-    <div class="row justify-content-between align-items-center logic-buttons">
+<div class="main container-fluid mt-4" *ngIf="Projects[0];else msg">
+    <div class="row g-4 justify-content-between align-items-center logic-buttons">
         <div class="col-md-10">
             <div class="filter">
-                <ul class="list-unstyled">
+                <ul class="list-unstyled flex-lg-nowrap flex-wrap">
                     <li (click)="clearSearch()">
                         <i *ngIf="!nameFlag && !startDateFlag && !endDateFlag && !statusFlag && !categoryFlag" class="fa-solid fa-filter"></i>
                         <i *ngIf="nameFlag || startDateFlag || endDateFlag || statusFlag || categoryFlag" class="fa-solid fa-filter-circle-xmark"></i>

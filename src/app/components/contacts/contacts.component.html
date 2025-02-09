@@ -18,9 +18,29 @@
     </div>
 </div>
 <div class="container-fluid py-4 main-content" >
-    <div class="text-end mb-4">
-        <i *ngIf="!isEdit" (click)="isEdit = !isEdit" class="fa fa-edit  fa-2x"></i>
-        <i *ngIf="isEdit" (click)="isEdit = !isEdit" class="fa fa-x fa-2x"></i>
+    <div class="row g-4 justify-content-between align-items-center">
+        <div class="col-md-4">
+            <div class="filter">
+                <ul class="list-unstyled text-white">
+                    <li (click)="clearSearch()">
+                        <i *ngIf="!sendDateFlag" class="fa-solid fa-filter"></i>
+                        <i *ngIf="sendDateFlag" class="fa-solid fa-filter-circle-xmark"></i>
+                        <span *ngIf="!sendDateFlag">Filter By</span>
+                        <span *ngIf="sendDateFlag">reset Filter</span>
+                    </li>
+                    <li (click)="toggleFilter('sendDateFlag')">
+                        <span *ngIf="!sendDateFlag">Sending Date</span>
+                        <input [(ngModel)]="sendDate" *ngIf="sendDateFlag" type="date" title="send date">
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="text-end">
+                <i *ngIf="!isEdit" (click)="isEdit = !isEdit" class="fa fa-edit  fa-2x"></i>
+                <i *ngIf="isEdit" (click)="isEdit = !isEdit" class="fa fa-x fa-2x"></i>
+            </div>
+        </div>
     </div>
     <table class="my-table m-auto" *ngIf="contacts[0];else msg">
         <thead>
@@ -36,7 +56,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let contact of contacts ; let i = index ; let e = even">
+            <tr *ngFor="let contact of contacts | sendDateSearch : sendDate ; let i = index ; let e = even">
                 <td [class.bg-row]="e">{{i+1}}</td>
                 <td [class.bg-row]="e"><img src="./assets/images/user.png" alt=""></td>
                 <td [class.bg-row]="e">{{contact.name}}</td>

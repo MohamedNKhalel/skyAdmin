@@ -1,4 +1,29 @@
-<div class="container-fluid mt-4">
+<div class="container-fluid mt-4" *ngIf="clients[0];else msg" >
+    <div class="filter w-50">
+        <ul class="list-unstyled text-white">
+            <li (click)="clearSearch()">
+                <i *ngIf="!visibilityFlag && !rateFlag" class="fa-solid fa-filter"></i>
+                <i *ngIf="visibilityFlag || rateFlag" class="fa-solid fa-filter-circle-xmark"></i>
+                <span *ngIf="!visibilityFlag && !rateFlag">Filter By</span>
+                <span *ngIf="visibilityFlag || rateFlag">reset Filter</span>
+            </li>
+            <li (click)="toggleFilter('visibilityFlag')">
+                <span *ngIf="!visibilityFlag">Visibility</span>
+                <select [(ngModel)]="visibility" (click)="stop($event)"  *ngIf="visibilityFlag" title="filter">
+                    <option value="" selected disabled>Select</option>
+                    <option value="true">Visible</option>
+                    <option value="false">Hidden</option>
+                </select>
+            </li>
+            <li (click)="toggleFilter('rateFlag')">
+                <span *ngIf="!rateFlag">Rate</span>
+                <select (click)="stop($event)" [(ngModel)]="rate" *ngIf="rateFlag" title="filter">
+                    <option value="" selected disabled>Select</option>
+                    <option *ngFor="let client of [1,2,3,4,5]" [value]="client">{{client}}</option>
+                </select>
+            </li>
+        </ul>
+    </div>
     <table class="my-table">
         <thead>
             <tr>
@@ -11,7 +36,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr (click)="displayOpinion(i)" *ngFor="let client of clients ; let i = index ; let e = even">
+            <tr (click)="displayOpinion(i)" *ngFor="let client of clients | visibiltySearch:visibility | rateSearch :rate; let i = index ; let e = even">
                 <td [ngClass]="{'bg-row':e}">{{i+1}}</td>
                 <td [ngClass]="{'bg-row':e}">{{client.name}}</td>
                 <td [ngClass]="{'bg-row':e}">{{client.createdAt | date:"longDate"}}</td>
@@ -53,3 +78,19 @@
     </div>
     
 </div>
+
+
+<ng-template #msg>
+    <div class="msg flex-column ">
+        <h1 class="text-white">Empty 😔</h1>
+        <p >There is no Clients yet, please be patient</p>
+        <div class="dots">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</ng-template>

@@ -13,7 +13,7 @@
                 <div class="d-flex gap-2 align-items-center justify-content-between w-100">
                     <p class="m-0">{{role}}</p>
                     <div *ngIf="remainingTime$ | async as remainingTime" class=" text-center ">
-                        <p class="m-0"><span class="text-danger fs-6 fw-medium text-capitalize" ><i class="fa-regular fa-xl fa-clock me-2 fa-spin"></i></span> <span class="remain-time">{{formatTime(remainingTime)}}</span></p>
+                        <p class="m-0"><span class="text-danger fs-6 fw-medium text-capitalize" ><i class="fa-regular fa-xl fa-clock fa-spin"></i>remaining : </span> <span class="remain-time">{{formatTime(remainingTime)}}</span></p>
                     </div>
                 </div>
             </div>
@@ -31,6 +31,9 @@
         </button>
         <div class="collapse navbar-collapse" id="collapsibleNavId">
             <ul class="navbar-nav m-auto my-0 mt-2 gap-lg-3  text-center mt-lg-0 links">
+                <li class="nav-item fs-6" routerLinkActive="active-link" [routerLink]="'/'+role+'/home'">
+                    <a class="nav-link" >Home</a>
+                </li>
                 <li class="nav-item fs-6" routerLinkActive="active-link" [routerLink]="'/'+role+'/contact'">
                     <a class="nav-link" >Contact</a>
                 </li>
@@ -46,7 +49,7 @@
             </ul>
             
             <div  class="pe-3 text-center text-center ms-auto">
-                <p class="m-0 text-white fs-6"><span *ngIf="currentTime$ | async as currentTime">{{currentTime| date:"dd - MMMM - yyyy | hh:mm:ss"}}</span></p>
+                <p class="m-0 text-white fs-6"><span *ngIf="currentTime$ | async as currentTime">{{currentTime| date:"dd - MM - yyyy | hh:mm:ss a"}}</span></p>
             </div>
         </div>
     </div>

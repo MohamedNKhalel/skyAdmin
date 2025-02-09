@@ -29,6 +29,8 @@ export class ContactsComponent implements OnInit {
   successFlag:boolean = false;
   contactId:string ='';
   date:any = new  Date().toISOString();
+  sendDate:string = '';
+  sendDateFlag:boolean = false;
   ngOnInit(): void {
       this.getContacts();
       console.log(this.date);
@@ -59,6 +61,17 @@ export class ContactsComponent implements OnInit {
   passId(id:string){
     this.isDelClicked = !this.isDelClicked
     this.contactId = id;
+  }
+  resetFilter(){
+    this.sendDateFlag = false;
+  }
+  clearSearch(){
+    this.sendDate = ''
+    this.resetFilter();
+  }
+  toggleFilter(selectedFilter: string): void {
+    this.resetFilter();
+    (this as any)[selectedFilter] = !(this as any)[selectedFilter]
   }
   deleteContact(id:string){
     this._DataService.deleteContact(id).subscribe({

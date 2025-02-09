@@ -4,7 +4,6 @@ import { DataService } from 'src/app/services/data.service';
 import { Client } from 'src/app/interfaces/client';
 import { MatDialog } from '@angular/material/dialog';
 import { SharedModule } from 'src/app/modules/shared/shared.module';
-import { AddUserComponent } from '../add-user/add-user.component';
 import { ToastrService } from 'ngx-toastr';
 import { ClientSettingsComponent } from '../client-settings/client-settings.component';
 
@@ -22,6 +21,11 @@ export class ClientsComponent implements OnInit{
   clientId:string = "";
   opinionClicked:boolean = false;
   isDelClicked:boolean = false;
+  
+  visibility:string = '';
+  visibilityFlag:boolean = false;
+  rate:number = 0;
+  rateFlag:boolean = false;
   constructor(private _DataService:DataService , private _MatDialog:MatDialog,private _ToastrService:ToastrService){}
   ngOnInit(): void {
     this.getAllClients()
@@ -86,6 +90,19 @@ export class ClientsComponent implements OnInit{
       console.log("Dialog is closed");
       
     })
+  }
+  clearSearch(){
+    this.visibility = "";
+    this.rate = 0;
+    this.resetFilter();
+  }
+  resetFilter(){
+    this.visibilityFlag = false;
+    this.rateFlag = false;
+  }
+  toggleFilter(selectedFilter: string): void {
+    this.resetFilter();
+    (this as any)[selectedFilter] = !(this as any)[selectedFilter]
   }
   stop(event:any){
     event.stopPropagation();

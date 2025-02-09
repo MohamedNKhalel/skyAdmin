@@ -220,52 +220,52 @@ textarea{
     }
 }
 
-.logic-buttons{
-    margin-bottom: 15px;
-    .filter{
-        color: white;
-        ul{
-            background-color: var(--second-color);
-            border: solid 2px #313D4F;
-            border-left:none;
-            border-radius: 10px;
-            margin: 0;
-            overflow: hidden;
+.filter{
+    color: white;
+    ul{
+        background-color: var(--second-color);
+        border: solid 2px #313D4F;
+        border-left:none;
+        border-radius: 10px;
+        margin: 0;
+        overflow: hidden;
+        display: flex;
+        li{
             display: flex;
-            li{
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                cursor: pointer;
-                border-left: solid 2px #313D4F;
-                transition: all .3s ease;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border-left: solid 2px #313D4F;
+            transition: all .3s ease;
+            width: 100%;
+            &:hover{
+                background-color: #313D4F;
+            }
+            span{
+            padding:15px 20px;  
+            text-transform: capitalize;
+            }
+            .mat-mdc-form-field-subscript-wrapper{
+                display: none !important;
+            }
+            input,select,mat-select{
+                background-color: var(--bg-color);
+                color: white;
+                border-radius: 5px;
+                height: 100%;
                 width: 100%;
-                &:hover{
-                    background-color: #313D4F;
-                }
-                span{
-                padding:15px 20px;  
-                text-transform: capitalize;
-                }
-                .mat-mdc-form-field-subscript-wrapper{
-                    display: none !important;
-                }
-                input,select,mat-select{
-                    background-color: var(--bg-color);
+                padding: 10px;
+                border: none;
+                outline: none;
+                &::placeholder{
                     color: white;
-                    border-radius: 5px;
-                    height: 100%;
-                    width: 100%;
-                    padding: 10px;
-                    border: none;
-                    outline: none;
-                    &::placeholder{
-                        color: white;
-                    }
                 }
             }
         }
     }
+}
+.logic-buttons{
+    margin-bottom: 15px;
     button{
         border: none;
         padding: 10px 25px;
@@ -277,4 +277,7 @@ textarea{
             background-color: #6C99FF;
         }
     }
+}
+@media screen and (max-width:768px)  {
+
 }

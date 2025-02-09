@@ -19,6 +19,9 @@ import { CategorysearchPipe } from 'src/app/pipes/Project/categorysearch.pipe';
 import { StatussearchPipe } from 'src/app/pipes/Project/statussearch.pipe';
 import { StartdatesearchPipe } from 'src/app/pipes/Project/startdatesearch.pipe';
 import { EnddatesearchPipe } from 'src/app/pipes/Project/enddatesearch.pipe';
+import { RateSearchPipe } from 'src/app/pipes/clients/rate-search.pipe';
+import { VisibiltySearchPipe } from 'src/app/pipes/clients/visibilty-search.pipe';
+import { SendDateSearchPipe } from 'src/app/pipes/contacts/send-date-search.pipe';
 
 @NgModule({
   declarations: [
@@ -29,13 +32,19 @@ import { EnddatesearchPipe } from 'src/app/pipes/Project/enddatesearch.pipe';
     EnddatesearchPipe,
     StartdatesearchPipe,
     NamesearchPipe,
-    StatussearchPipe
+    StatussearchPipe,
+    VisibiltySearchPipe,
+    RateSearchPipe,
+    SendDateSearchPipe,
+
   ],
   imports: [
     CommonModule,FormsModule,ReactiveFormsModule,ToastrModule.forRoot(),MatFormFieldModule,MatRadioModule,NgxDropzoneModule,
     MatInputModule,MatSelectModule,MatDatepickerModule,MatNativeDateModule
   ],
-  exports:[FormsModule,ReactiveFormsModule,MatFormFieldModule,NgxDropzoneModule,
+  exports:[FormsModule,ReactiveFormsModule,MatFormFieldModule,NgxDropzoneModule,VisibiltySearchPipe,
+    SendDateSearchPipe,
+    RateSearchPipe,
     MatInputModule,MatSelectModule,MatRadioModule,UsernamesearchPipe,StatusPipe,PhonePipe,MatDatepickerModule,MatNativeDateModule,NamesearchPipe,CategorysearchPipe,StatussearchPipe,StartdatesearchPipe,EnddatesearchPipe,]
 })
 export class SharedModule { }

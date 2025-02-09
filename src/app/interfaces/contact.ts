@@ -3,6 +3,6 @@ export interface Contact {
     email:string,
     phone:string,
     description:string,
-    date?:string,
+    date:string,
     _id:string
 }

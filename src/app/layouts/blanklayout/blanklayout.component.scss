@@ -3,8 +3,12 @@
     justify-content: space-between;
     align-items: center;
 }
-.side-nav,.content{
+.all,.side-nav{
     transition: all .3s ease-in-out;
+}
+.top-nav{
+    position: sticky;
+    top: 0;
 }
 .content{
     min-height: calc(100vh) !important;

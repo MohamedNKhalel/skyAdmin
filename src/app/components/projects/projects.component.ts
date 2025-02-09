@@ -6,12 +6,11 @@ import { DataService } from 'src/app/services/data.service';
 import { Category, Project } from 'src/app/interfaces/project';
 import { ToastrService } from 'ngx-toastr';
 import { SharedModule } from 'src/app/modules/shared/shared.module';
-import { TableComponent } from "../../modules/shared/table/table.component";
 
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [CommonModule, MatDialogModule, SharedModule, TableComponent],
+  imports: [CommonModule, MatDialogModule, SharedModule],
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.scss'],
   providers:[]
