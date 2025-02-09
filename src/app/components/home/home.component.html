@@ -19,14 +19,14 @@
                                         <p><i class="fa-solid fa-eye-slash"></i> Hidden Projects</p>
                                         <h3>{{hiddenProjects.length}} project</h3>
                                         <div class="progress rounded-1">
-                                            <div class="progress-bar" role="progressbar" title="hidden" [style.width]="projects[0]?((hiddenProjects.length / projects.length) * 100).toFixed() + '%':'0%'" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">{{projects[0]?((hiddenProjects.length / projects.length) * 100).toFixed() + '%':'0'}} %</div>
+                                            <div class="progress-bar" role="progressbar" title="hidden" [style.width]="projects[0]?((hiddenProjects.length / projects.length) * 100).toFixed() + '%':'0%'" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">{{projects[0]?((hiddenProjects.length / projects.length) * 100).toFixed() :'0'}} %</div>
                                         </div>
                                     </div>
                                     <div class="p-3 rounded-4 state shadow  w-100">
                                         <p><i class="fa-solid fa-eye"></i> Visible Projects</p>
                                         <h3>{{visibleProjects.length}} project</h3>
                                         <div class="progress rounded-1">
-                                            <div class="progress-bar" role="progressbar" title="hidden" [style.width]="projects[0]?((visibleProjects.length / projects.length) * 100).toFixed() + '%':'0%'" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">{{projects[0]?((visibleProjects.length / projects.length) * 100).toFixed() + '%':'0'}} %</div>
+                                            <div class="progress-bar" role="progressbar" title="hidden" [style.width]="projects[0]?((visibleProjects.length / projects.length) * 100).toFixed() + '%':'0%'" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">{{projects[0]?((visibleProjects.length / projects.length) * 100).toFixed() :'0'}} %</div>
                                         </div>
                                     </div>
                                 </div>
@@ -60,14 +60,14 @@
                                         <p><i class="fa-solid fa-eye-slash"></i> Hidden Messages</p>
                                         <h3>{{hiddenMessage.length}} Message</h3>
                                         <div class="progress rounded-1">
-                                            <div class="progress-bar" role="progressbar" title="hidden" [style.width]="messages[0]?((hiddenMessage.length / messages.length) * 100).toFixed() + '%':'0%'" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">{{messages[0]?((hiddenMessage.length / messages.length) * 100).toFixed() + '%':'0'}} %</div>
+                                            <div class="progress-bar" role="progressbar" title="hidden" [style.width]="messages[0]?((hiddenMessage.length / messages.length) * 100).toFixed() + '%':'0%'" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">{{messages[0]?((hiddenMessage.length / messages.length) * 100).toFixed() :'0'}} %</div>
                                         </div>
                                     </div>
                                     <div class="p-3 rounded-4 state shadow  w-100">
                                         <p><i class="fa-solid fa-eye"></i> Visible Messages</p>
                                         <h3>{{visibleMessage.length}} Message</h3>
                                         <div class="progress rounded-1">
-                                            <div class="progress-bar" role="progressbar" title="hidden" [style.width]="messages[0]?((visibleMessage.length / messages.length) * 100).toFixed() + '%':'0%'" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">{{messages[0]?((visibleMessage.length / messages.length) * 100).toFixed() + '%':'0'}} %</div>
+                                            <div class="progress-bar" role="progressbar" title="hidden" [style.width]="messages[0]?((visibleMessage.length / messages.length) * 100).toFixed() + '%':'0%'" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">{{messages[0]?((visibleMessage.length / messages.length) * 100).toFixed() :'0'}} %</div>
                                         </div>
                                     </div>
                                 </div>
@@ -96,14 +96,14 @@
                                         <p><i class="fa-solid fa-lock-open"></i>Admin</p>
                                         <h3>{{adminRole.length}} Admin</h3>
                                         <div class="progress rounded-1">
-                                            <div class="progress-bar" role="progressbar" title="hidden" [style.width]="users[0]?((adminRole.length / users.length) * 100).toFixed() + '%':'0%'" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">{{users[0]?((adminRole.length / users.length) * 100).toFixed() + '%':'0'}} %</div>
+                                            <div class="progress-bar" role="progressbar" title="hidden" [style.width]="users[0]?((adminRole.length / users.length) * 100).toFixed() + '%':'0%'" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">{{users[0]?((adminRole.length / users.length) * 100).toFixed() :'0'}} %</div>
                                         </div>
                                     </div>
                                     <div class="p-3 rounded-4 state shadow  w-100">
                                         <p><i class="fa-solid fa-lock"></i>User</p>
                                         <h3>{{userRole.length}} User</h3>
                                         <div class="progress rounded-1">
-                                            <div class="progress-bar" role="progressbar" title="hidden" [style.width]="users[0]?((userRole.length / users.length) * 100).toFixed() + '%':'0%'" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">{{users[0]?((userRole.length / users.length) * 100).toFixed() + '%':'0'}} %</div>
+                                            <div class="progress-bar" role="progressbar" title="hidden" [style.width]="users[0]?((userRole.length / users.length) * 100).toFixed() + '%':'0%'" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">{{users[0]?((userRole.length / users.length) * 100).toFixed() :'0'}} %</div>
                                         </div>
                                     </div>
                                 </div>
